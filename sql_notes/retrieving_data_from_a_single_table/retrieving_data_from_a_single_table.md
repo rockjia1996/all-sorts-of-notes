@@ -4,7 +4,6 @@
 ## Query Database with SELECT clause
 
 Step 1: Choose a database
-
 ```sql
 USE some_database_name;
 ```
@@ -25,7 +24,7 @@ WHERE  some_col > 60;
 
 
 ## SELECT clause
-Common Syntax:
+Basic Syntax:
 
 To select specific columns
 ```sql
