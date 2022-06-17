@@ -55,3 +55,14 @@ SELECT name, (point + 10) * 100 AS "discount factor" FROM customer;
 As shown above, AS is the keyword that can be used for aliasing a column. One thing, if the new name contains space, it needs to be in the single or double quotes. If the new name does not contain space, it can be specified without quotes.
 
 
+# WHERE clause
+Using where clause, the queries can be filtered.
+```sql
+SELECT * FROM customers
+WHERE points > 3000;
+```
+
+```sql
+-- >, >=, <, <=, =, <>, !=
+```
+
