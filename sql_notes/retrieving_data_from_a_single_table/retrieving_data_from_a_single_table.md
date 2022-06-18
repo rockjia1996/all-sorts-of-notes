@@ -137,5 +137,49 @@ WHERE phone IS NULL;
 ```
 
 ## ORDER BY
+To sort the rows that query returns ORDER BY clause can be used
+```sql
+SELECT * FROM customer
+ORDER BY first_name;
+```
+Ordered the selected row in ascending order in first_name
+
+Other ORDER BY examples
+```sql
+ORDER BY first_name DESC
+ORDER BY state, first_name
+ORDER BY state DESC, first_name DESC
+```
+
+ORDER BY can also be applied on the operation during the selection
+```sql
+SELECT * FROM order_items
+WHERE order_id = 2
+ORDER BY quantity * unit_price DESC
+```
+Here, the ORDER BY is applied on the value of quantity * unit_price 
+
+ORDER BY with alias
+```sql
+SELECT *, quantity * unit_price as total_price FROM order_items
+ORDER BY total_price DESC;
+```
+
+## LIMIT
+
+Return only the first three results
+```sql
+SELECT * FROM customers
+LIMIT 3;
+```
+
+For pagniation purpose, the following query can be used
+```sql
+SELECT * FROM customers
+LIMIT 6, 3;
+```
+The code above skips the first 6 results, and return next 3 results.
+
+
 
 
