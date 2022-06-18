@@ -55,7 +55,7 @@ SELECT name, (point + 10) * 100 AS "discount factor" FROM customer;
 As shown above, AS is the keyword that can be used for aliasing a column. One thing, if the new name contains space, it needs to be in the single or double quotes. If the new name does not contain space, it can be specified without quotes.
 
 
-# WHERE clause
+## WHERE clause
 Using where clause, the queries can be filtered.
 ```sql
 SELECT * FROM customers
@@ -91,13 +91,51 @@ WHERE state IN ('VA', 'FL', 'GA');
 ### BETWEEN in WHERE
 ```sql
 SELECT * FROM table
-where points BETWEEN 1000 AND 2000
+where points BETWEEN 1000 AND 2000;
 ```
 BETWEEN is inclusive, in the example above, points that equals to 1000 and points that equals to 2000 will be selected.
 
 
 
+## LIKE clause
+```sql
+SELECT * FROM customers
+WHERE last_name LIKE "b%";
+```
+% means zero or more any character.
+_ means one any character
+
+## REGEXP
+
+```sql
+SELECT * FROM customer
+WHERE last_name REGEXP '^field$';
+```
+The code above looks for the last_name that start with field and end with field.
+
+```sql
+-- ^      begin
+-- $      end
+-- |      or 
+-- [a-f]  range
+```
 
 
+More examples
+```sql
+'field$|mac|rose'   -- end with field or exactly mac or exactly rose
+'[gim]e'            -- g or i or m follows an e
+'[a-h]e[x-z]'       -- one character from a to h, then e, one character from  x to z
+```
+
+## NULL
+Sometimes the table may have some empty field with NULL value, to select the rows that contain a null value (in this case, phone value is null).
+```sql
+SELECT * FROM customer
+WHERE phone IS NULL;
+-- alternatively, WHERE phone IS NOT NULL;
+```
+
+## ORDER BY
 
 
