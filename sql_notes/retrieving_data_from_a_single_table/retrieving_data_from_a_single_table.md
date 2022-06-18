@@ -62,7 +62,42 @@ SELECT * FROM customers
 WHERE points > 3000;
 ```
 
+The common comparsion operators in MySQL
 ```sql
+-- Common comparsion operators
 -- >, >=, <, <=, =, <>, !=
 ```
+
+To compare date
+```sql
+SELECT * FROM customers
+WHERE birth_data > "1990-01-01"
+```
+Date string needs to the following format, 4 digits for years, 2 digits for month, and 2 digits for day.
+
+To specific multiple conditions
+```sql
+SELECT * FROM customers
+WHERE birth_date > "1990-01-01" AND points > 1000;
+```
+Other logical operators are NOT, OR.
+
+To filter base on a list of constraints
+```sql
+SELECT * FROM customers
+WHERE state IN ('VA', 'FL', 'GA');
+
+```
+### BETWEEN in WHERE
+```sql
+SELECT * FROM table
+where points BETWEEN 1000 AND 2000
+```
+BETWEEN is inclusive, in the example above, points that equals to 1000 and points that equals to 2000 will be selected.
+
+
+
+
+
+
 
