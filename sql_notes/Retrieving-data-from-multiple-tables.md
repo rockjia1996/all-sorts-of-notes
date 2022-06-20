@@ -93,3 +93,51 @@ SELECT * FROM order_item
 JOIN order_item_notes 
     USING(order_id, product_id)    -- It is same as 'ON order_item.order_id = order_item_notes.order_id'
 ```
+
+## Natural Join (not recommand)
+```sql
+SELECT * FROM orders 
+NATURAL JOIN customers;
+```
+The database will automatically join these two tables based on the columns that has the same names. 
+
+
+## Cross Join
+We use CROSS JOIN to join every record on the first table with every record on the second table.
+
+Explicitly Syntax
+```sql
+SELECT * FROM customers c
+CROSS JOIN products p
+ORDER BY c.first_name;
+```
+
+Implicity Syntax
+```sql
+SELECT * FROM customers, orders;
+```
+
+## Union
+In sql, we also can combine rows from tables (same or different). To combine two results of queries, we can use UNION operator.
+```sql
+SELECT -- first query
+    customer_id, first_name, points, 'Bronze' AS type
+FROM
+    customers
+WHERE
+    points < 2000 
+UNION SELECT -- second query
+    customer_id, first_name, points, 'Sliver' AS type
+FROM
+    customers
+WHERE
+    points BETWEEN 2000 AND 3000 
+UNION SELECT  -- third query
+    customer_id, first_name, points, 'Gold' AS type
+FROM
+    customers
+WHERE
+    points > 3000
+ORDER BY first_name;
+```
+Note that the number of columns that each query returns should be equal, otherwise, you will get an error and the names of the columns is determined by the first query.
