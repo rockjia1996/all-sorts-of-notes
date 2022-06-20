@@ -1,7 +1,7 @@
 # Retrieving data from multiple tables
 
 
-## Select columns from multiple tables, using INNER JOIN / JOIN
+## Select Columns From Multiple Tables, Using INNER JOIN / JOIN
 ```sql
 SELECT * from orders
 INNER JOIN customers
@@ -17,3 +17,16 @@ JOIN customers
 ```
 
 ## Compoound Join Conditions
+Sometimes that values in a single column can be duplicated which cause us to be unable to uniquely identify a row solely based on a single column. We may need to combine one or more columns to uniquely identifying a row.
+```sql
+SELECT 
+    *
+FROM 
+    order_items oi
+    JOIN 
+    order_item_notes oin 
+        ON oi.order_id = oin.order_id AND oi.product_id = oin.product_id;
+```
+
+## Outer Join
+
