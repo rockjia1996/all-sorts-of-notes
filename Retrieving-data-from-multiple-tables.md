@@ -29,4 +29,24 @@ FROM
 ```
 
 ## Outer Join
+INNER JOIN joins based on whether the conditions are matched in two records. 
+Outer join joins based on specifying the table that is included regardless the conditions and conditions.
+There are two types of outer joins, LEFT JOIN and RIGHT JOIN. 
+```sql
+SELECT
+    *
+FROM
+    table_1         -- left table
+LEFT JOIN 
+    table_2         -- right table
+    ON some_condition
+```
+The query about will return all the records in table_1 regardless it matches the condition or not. For the unmatched columns, the value of field of the column will be null. For the matched result, it appends matched record in table_2 to the record in the table_1.
+
+LEFT JOIN: Include all the records in the left table regardless the conditions.
+RIGHT JOIN: Include all the records in the right tbale regarless the conditions.
+
+Note: You should avoid alternative the LEFT JOIN and RIGHT JOIN like crazy. Stick to one type (usually LEFT JOIN) JOIN so that you can have an easiler time to picture what's going on. 
+
+
 
