@@ -46,5 +46,31 @@ VALUES (
 
 ```
 
+## Insert to Multiple Tables
+Basic Syntax
+```sql
+INSERT INTO shippers(name)
+VALUES 
+    ('shipper1'),
+    ('shipper2'),
+    ('shipper3')
+
+```
+We can use comma to sepreate different values (rows) that we want to insert.
+
+## Inserting Hierarchical Rows (Insert Rows to Multiple Tables)
+```sql
+INSERT INTO orders (customer_id, order_date, status)
+VALUES (1, "2019-01-01", 1);
+
+INSERT INTO order_items
+VALUES 
+    (LAST_INSERT_ID(), 1, 1, 2.95),
+    (LAST_INSERT_ID(), 2, 2, 3.95);
+```
+orders table contians order_id but not the details of the items.
+order_items table contains order_id and the details of the items.
+One order in orders table may have one or more entries (children) in order_items table. They have a parent-child relationship.
+LAST_INSERT_ID() give the primary key of the last inserted record.
 
 
