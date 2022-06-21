@@ -73,4 +73,27 @@ order_items table contains order_id and the details of the items.
 One order in orders table may have one or more entries (children) in order_items table. They have a parent-child relationship.
 LAST_INSERT_ID() give the primary key of the last inserted record.
 
+## Creating a Copy of a Table
+To create a table in database
+```sql
+CREATE TABLE table_name AS
+-- HERE GOES YOUR RECORDS 
+```
+
+Example
+```sql
+CREATE TABLE invoice_archived as SELECT i.invoice_id,
+    i.number,
+    c.name,
+    i.invoice_total,
+    i.payment_total,
+    i.invoice_date,
+    i.due_date,
+    i.payment_date FROM
+    invoice i
+        JOIN 
+    client c on i.client_id = c.client_id
+WHERE i.payment_date IS NOT NULL;
+```
+Note that the WHERE clause goes after JOIN clause.
 
