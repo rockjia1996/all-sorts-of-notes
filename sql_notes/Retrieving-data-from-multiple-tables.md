@@ -1,4 +1,4 @@
-# Retrieving data from multiple tables
+# Retrieving Data from Multiple Tables
 
 
 ## Select Columns From Multiple Tables, Using INNER JOIN / JOIN
