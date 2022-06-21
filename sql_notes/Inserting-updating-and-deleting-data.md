@@ -97,3 +97,49 @@ WHERE i.payment_date IS NOT NULL;
 ```
 Note that the WHERE clause goes after JOIN clause.
 
+## Updating a Single Row
+```sql
+UPDATE invoices
+SET payment_total = 10, payment_date = '2019-01-01'
+WHERE invoice_id = 1;
+```
+We specify the invoice table after UPDATE, then using SET to specify the columns and values that we want to update, finally using WHERE to apply the update conditionally.
+
+To update based on columns without hard code values
+```sql
+UPDATE invoices
+SET payment_total = invoice_total * 2,
+    payment_date = due_date;
+```
+
+## Updating Multiple Rows
+By default, MySQL workbench runs in a safe mode that aonly allows you to update single row at a time. To bypass that you need to change the setting as following:
+    Edit -> Preference -> SQL Editor -> Uncheck safe update
+```sql
+UPDATE invoices
+SET payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE client_id IN (3, 4)
+```
+Note that the WHERE clause is optional.
+
+## Using Subqueries In Update
+```sql
+UPDATE invoices
+SET 
+    payment_total = invoice_total * 0.5,
+    payment_date = due_date
+WHERE client_id = (SELECT client_id FROM clients WHERE name = "Myworks");
+```
+
+## Deleting Rows
+To delete all the records in a table
+```sql
+DELETE FROM invoice;
+```
+
+To delete with the given condition
+```sql
+DELETE FROM invoice
+WHERE client_id = (SELECT client_id FROM clients WHERE name = "Myworks");
+```
