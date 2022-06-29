@@ -5,7 +5,7 @@ Basic syntax
 ```sql
 INSERT INTO customers VALUES(...)
 ```
-If the primary key i sset to auto increment, it is best to used DEFAULT to generate the value. 
+If the primary key is set to auto increment, it is best to used DEFAULT to generate the value. 
 If a column is NOT NULL (NN), you must supply a value.
 Without specifying the column name like the query above, the values need to be supplied in the same order as teh order of columns.
 
